@@ -10,3 +10,13 @@ class HireStore:
         self.label_name.grid(row=0, column=0)
         self.entry_name = tk.Entry(master)
         self.entry_name.grid(row=0, column=1)
+
+        self.label_receipt = tk.Label(master, text="Receipt Number")
+        self.label_receipt.grid(row=1, column=0)
+        self.entry_receipt = tk.Entry(master)
+        self.entry_receipt.grid(row=1, column=1)
+        
+        self.label_item = tk.Label(master, text="Item Hired")
+        self.label_item.grid(row=2, column=0)
+        self.entry_item = tk.Entry(master)
+        self.entry_item.grid(row=2, column=1)
