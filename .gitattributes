@@ -29,3 +29,14 @@ class HireStore:
         # create a button to add the hire details to the list
         self.button_add = tk.Button(master, text="Add Hire", command=self.add_hire)
         self.button_add.grid(row=4, column=0, columnspan=2)
+        
+        # create a listbox to display the current hires
+        self.listbox_hires = tk.Listbox(master)
+        self.listbox_hires.grid(row=5, column=0, columnspan=2)
+        
+        # create a button to remove the selected hire from the list
+        self.button_remove = tk.Button(master, text="Remove Hire", command=self.remove_hire)
+        self.button_remove.grid(row=6, column=0, columnspan=2)
+        
+        # create a dictionary to store the hire details
+        self.hire_dict = {}
