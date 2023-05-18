@@ -10,7 +10,7 @@ class HireStore:
         self.label_name.grid(row=0, column=0)
         self.entry_name = tk.Entry(master)
         self.entry_name.grid(row=0, column=1)
-
+        
         self.label_receipt = tk.Label(master, text="Receipt Number")
         self.label_receipt.grid(row=1, column=0)
         self.entry_receipt = tk.Entry(master)
@@ -20,7 +20,7 @@ class HireStore:
         self.label_item.grid(row=2, column=0)
         self.entry_item = tk.Entry(master)
         self.entry_item.grid(row=2, column=1)
-
+        
         self.label_quantity = tk.Label(master, text="Quantity")
         self.label_quantity.grid(row=3, column=0)
         self.entry_quantity = tk.Entry(master)
@@ -40,3 +40,40 @@ class HireStore:
         
         # create a dictionary to store the hire details
         self.hire_dict = {}
+        
+    def add_hire(self):
+        # get the hire details from the entries
+        name = self.entry_name.get()
+        receipt = self.entry_receipt.get()
+        item = self.entry_item.get()
+        quantity = int(self.entry_quantity.get())
+        
+        # add the hire details to the dictionary
+        self.hire_dict[receipt] = [name, item, quantity]
+        
+        # add the hire details to the listbox
+        hire_string = f"{name} - Receipt: {receipt} - Item: {item} - Quantity: {quantity}"
+        self.listbox_hires.insert(tk.END, hire_string)
+        
+        # clear the entry fields
+        self.entry_name.delete(0, tk.END)
+        self.entry_receipt.delete(0, tk.END)
+        self.entry_item.delete(0, tk.END)
+        self.entry_quantity.delete(0, tk.END)
+        
+    def remove_hire(self):
+        # get the selected hire from the listbox
+        selection = self.listbox_hires.curselection()
+        if selection:
+            hire_string = self.listbox_hires.get(selection[0])
+            receipt = hire_string.split(" - ")[1].split(": ")[1]
+            
+            # remove the hire details from the dictionary
+            del self.hire_dict[receipt]
+            
+            # remove the hire details from the listbox
+            self.listbox_hires.delete(selection[0])
+        
+root = tk.Tk()
+my_app = HireStore(root)
+root.mainloop()
