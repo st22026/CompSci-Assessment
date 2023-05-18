@@ -20,3 +20,12 @@ class HireStore:
         self.label_item.grid(row=2, column=0)
         self.entry_item = tk.Entry(master)
         self.entry_item.grid(row=2, column=1)
+
+        self.label_quantity = tk.Label(master, text="Quantity")
+        self.label_quantity.grid(row=3, column=0)
+        self.entry_quantity = tk.Entry(master)
+        self.entry_quantity.grid(row=3, column=1)
+        
+        # create a button to add the hire details to the list
+        self.button_add = tk.Button(master, text="Add Hire", command=self.add_hire)
+        self.button_add.grid(row=4, column=0, columnspan=2)
