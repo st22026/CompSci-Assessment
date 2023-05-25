@@ -82,20 +82,7 @@ def add_hire(self):
             # remove the hire details from the listbox
             self.listbox_hires.delete(selection[0])
 
-    def append_hire(self):
-        # get the last hire details from the dictionary
-        last_receipt = max(self.hire_dict.keys())
-        last_name, last_item, last_quantity = self.hire_dict[last_receipt]
-
-        # generate a new receipt number by adding one to the last receipt
-        new_receipt = str(int(last_receipt) + 1)
-
-        # append the same hire details with the new receipt to the dictionary
-        self.hire_dict[new_receipt] = [last_name, last_item, last_quantity]
-
-        # append the same hire details with the new receipt to the listbox
-        hire_string = f"{last_name} - Receipt: {new_receipt} - Item: {last_item} - Quantity: {last_quantity}"
-        self.listbox_hires.insert(tk.END, hire_string)
+    
 
 root = tk.Tk()
 my_app = HireStore(root)
